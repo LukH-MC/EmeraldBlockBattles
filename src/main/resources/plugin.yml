@@ -1,0 +1,6 @@
+name: EmeraldBlockBattles
+version: '1.0-SNAPSHOT'
+main: de.lukh.emeraldBlockBattles.Main
+api-version: '1.21'
+prefix: [ EmeraldBlockBattles ]
+authors: [ Luk_H ]
