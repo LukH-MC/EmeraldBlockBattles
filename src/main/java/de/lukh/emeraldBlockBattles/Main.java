@@ -1,17 +1,33 @@
 package de.lukh.emeraldBlockBattles;
 
+import de.lukh.emeraldBlockBattles.cmds.addPlayer;
+import de.lukh.emeraldBlockBattles.cmds.getPlayers;
+import de.lukh.emeraldBlockBattles.cmds.removePlayer;
 import de.lukh.emeraldBlockBattles.game.Game;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.Objects;
 
 public final class Main extends JavaPlugin {
     public static Game game;
+    public static Main plugin;
 
     @Override
     public void onEnable() {
         // Plugin startup logic
+        plugin = this;
+
+        newCommand("addPlayer", new addPlayer());
+        newCommand("getPlayer", new getPlayers());
+        newCommand("removePlayer", new removePlayer());
+
+
+        //end of Startup
         Bukkit.getConsoleSender().sendMessage("§aCreating Gameobject for BlockBattles");
         game = new Game();
     }
@@ -46,5 +62,25 @@ public final class Main extends JavaPlugin {
                 .append(Component.text("EBB", NamedTextColor.DARK_GREEN))
                 .append(Component.text("]", NamedTextColor.DARK_AQUA))
                 .append(Component.text(" " + s, NamedTextColor.AQUA));
+    }
+
+
+
+
+
+
+
+
+
+
+
+    //Eventregisitrierung
+    private void newEvent(Listener eventfile) {
+        Bukkit.getPluginManager().registerEvents(eventfile, this);
+    }
+
+    //Einfache Befehls Erstellung
+    private void newCommand(String command, CommandExecutor cmdfile) {
+        Objects.requireNonNull(getCommand(command)).setExecutor(cmdfile);
     }
 }

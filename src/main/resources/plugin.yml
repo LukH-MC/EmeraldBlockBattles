@@ -4,3 +4,10 @@ main: de.lukh.emeraldBlockBattles.Main
 api-version: '1.21'
 prefix: [ EmeraldBlockBattles ]
 authors: [ Luk_H ]
+commands:
+  addPlayer:
+    description: Adds a player to the active game
+  getPlayers:
+    description: Lists a player from the active game
+  removePlayer:
+    description: Removes a player from the active game
