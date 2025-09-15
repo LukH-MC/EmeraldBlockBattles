@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 public class Game {
     private Coordinate point1;
     private Coordinate point2;
-    private Player[] players;
+    private Player[] players = {null, null};
 
 
 

@@ -8,10 +8,10 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.Objects;
 
 public final class Main extends JavaPlugin {
     public static Game game;
@@ -23,7 +23,7 @@ public final class Main extends JavaPlugin {
         plugin = this;
 
         newCommand("addPlayer", new addPlayer());
-        newCommand("getPlayer", new getPlayers());
+        newCommand("getPlayers", new getPlayers());
         newCommand("removePlayer", new removePlayer());
 
 
@@ -80,7 +80,10 @@ public final class Main extends JavaPlugin {
     }
 
     //Einfache Befehls Erstellung
-    private void newCommand(String command, CommandExecutor cmdfile) {
-        Objects.requireNonNull(getCommand(command)).setExecutor(cmdfile);
+    private void newCommand(String command, CommandExecutor cmdFile) {
+        PluginCommand pluginCommand = getCommand(command);
+
+        if (pluginCommand != null) pluginCommand.setExecutor(cmdFile);
+        else Bukkit.getLogger().warning("Befehl '" + command + "' konnte nicht registriert werden - Prüfe die yml und Code");
     }
 }

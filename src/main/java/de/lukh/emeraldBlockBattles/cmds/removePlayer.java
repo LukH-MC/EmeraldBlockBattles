@@ -20,15 +20,23 @@ public class removePlayer implements CommandExecutor {
             return false;
         }
         Player[] registered = Main.game.getPlayerObj();
+//        Bukkit.getLogger().info("DEBUG: " + Arrays.toString(registered));
+        if (registered[0] == null && registered[1] == null) {
+            sender.sendMessage(Main.sendWarning("That Player is not currently registered for a game!"));
+            return false;
+        }
 
-        if (registered[0].getName().equals(args[0])) {
+        if (registered[0] != null && registered[0].getName().equals(args[0])) {
             Main.game.forceRemovePlayer(0);
+            sender.sendMessage(Main.sendInfo("Success!"));
             return true;
         }
-        if (registered[1].getName().equals(args[0])) {
+        if (registered[1] != null && registered[1].getName().equals(args[0])) {
             Main.game.forceRemovePlayer(1);
+            sender.sendMessage(Main.sendInfo("Success!"));
             return true;
         }
+        sender.sendMessage(Main.sendWarning("Player is not registered!"));
         return false;
     }
 }
