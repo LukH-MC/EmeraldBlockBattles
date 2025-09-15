@@ -3,6 +3,7 @@ package de.lukh.emeraldBlockBattles;
 import de.lukh.emeraldBlockBattles.game.Game;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
@@ -10,16 +11,23 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        game = new Game();
-
         // Plugin startup logic
-
+        Bukkit.getConsoleSender().sendMessage("§aCreating Gameobject for BlockBattles");
+        game = new Game();
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
     }
+
+
+
+
+
+
+
+    //
 
     public static Component sendError(String s) {
         return Component.text("[", NamedTextColor.DARK_AQUA)
