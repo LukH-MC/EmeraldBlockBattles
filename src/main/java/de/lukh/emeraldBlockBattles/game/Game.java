@@ -1,12 +1,12 @@
 package de.lukh.emeraldBlockBattles.game;
 
-import net.kyori.adventure.text.BlockNBTComponent.WorldPos.Coordinate;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 public class Game {
-    private Coordinate point1;
-    private Coordinate point2;
+    private Location point1;
+    private Location point2;
     private Player[] players = {null, null};
 
 
@@ -44,7 +44,7 @@ public class Game {
         players[id] = null;
     }
 
-    public void setCoord(Coordinate coords, String n) {
+    public void setCoord(Location coords, String n) {
         if(n == "1") {
             this.point1 = coords;
             return;
