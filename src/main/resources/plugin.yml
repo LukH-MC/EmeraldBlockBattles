@@ -2,12 +2,19 @@ name: EmeraldBlockBattles
 version: '1.0-SNAPSHOT'
 main: de.lukh.emeraldBlockBattles.Main
 api-version: '1.21'
+# noinspection YAMLSchemaValidation
 prefix: [ EmeraldBlockBattles ]
 authors: [ Luk_H ]
 commands:
   addPlayer:
     description: Adds a player to the active game
+    usage: addPlayer [playername]
   getPlayers:
     description: Lists a player from the active game
   removePlayer:
     description: Removes a player from the active game
+    usage: removePlayer [playername]
+  setArena:
+    description: Set the coordinates of your arena
+  getArena:
+    description: Lists the coordinates of your arena

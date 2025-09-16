@@ -3,6 +3,9 @@
     <words>
       <w>coords</w>
       <w>gameobject</w>
+      <w>locs</w>
+      <w>lukh</w>
+      <w>playername</w>
     </words>
   </dictionary>
 </component>

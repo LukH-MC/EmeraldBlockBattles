@@ -1,8 +1,6 @@
 package de.lukh.emeraldBlockBattles;
 
-import de.lukh.emeraldBlockBattles.cmds.addPlayer;
-import de.lukh.emeraldBlockBattles.cmds.getPlayers;
-import de.lukh.emeraldBlockBattles.cmds.removePlayer;
+import de.lukh.emeraldBlockBattles.cmds.*;
 import de.lukh.emeraldBlockBattles.game.Game;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -25,6 +23,8 @@ public final class Main extends JavaPlugin {
         newCommand("addPlayer", new addPlayer());
         newCommand("getPlayers", new getPlayers());
         newCommand("removePlayer", new removePlayer());
+        newCommand("setArena", new setArena());
+        newCommand("getArena", new getArena());
 
 
         //end of Startup

@@ -24,6 +24,10 @@ public class Game {
         return new Player[] {this.players[0], this.players[1]};
     }
 
+    public Location[] getArena() {
+        return  new Location[] {this.point1, this.point2};
+    }
+
 
     //setters
     public int setPlayer(String p) {
