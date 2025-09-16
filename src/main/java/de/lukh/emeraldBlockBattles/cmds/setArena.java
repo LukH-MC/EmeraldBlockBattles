@@ -2,7 +2,9 @@ package de.lukh.emeraldBlockBattles.cmds;
 
 import de.lukh.emeraldBlockBattles.Main;
 import org.apache.commons.lang3.StringUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -16,22 +18,31 @@ public class setArena implements CommandExecutor {
             return false;
         }
 
-        if (args[0] != "1" && args[0] != "2") {
+        if (!args[0].equals("1") && !args[0].equals("2")) {
             sender.sendMessage(Main.sendError("Wrong usage! \nUsage: /setCoords [1/2] [x] [y] [z]"));
             return false;
         }
-        for (int i = 0; i < 4; i++) {
-            if (StringUtils.isNumeric(args[i])) {
-                sender.sendMessage(Main.sendError("Wrong usage! \nUsage: /setCoords [1/2] [x] [y] [z]"));
+
+
+        String intRegex = "^-?\\d+$";
+
+        for (int i = 1; i < 4; i++) {
+            if (!args[i].matches(intRegex)) {
+                sender.sendMessage(Main.sendError("Invalid coordinate at position " + i +
+                        "! Usage: /setCoords [1/2] [x] [y] [z]"));
                 return false;
             }
         }
 
 
-
-        Location coords = null;
-        coords.add(Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]));
-
+        World world = Bukkit.getWorld("world");
+        Location coords = new Location(world, Double.parseDouble(args[1]), Double.parseDouble(args[2]), Double.parseDouble(args[3]));
+        try {
+            Main.game.setCoord(coords, args[0]);
+            sender.sendMessage(Main.sendInfo("Success!"));
+        } catch (Exception e) {
+            sender.sendMessage(Main.sendError("Something went wrong..."));
+        }
 
         return false;
     }
