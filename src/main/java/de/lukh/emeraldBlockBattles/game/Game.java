@@ -43,4 +43,16 @@ public class Game {
     public void forceRemovePlayer(int id){
         players[id] = null;
     }
+
+    public void setCoord(Coordinate coords, String n) {
+        if(n == "1") {
+            this.point1 = coords;
+            return;
+        }
+        if (n == "2") {
+            this.point2 = coords;
+            return;
+        }
+    }
+
 }
